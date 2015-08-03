@@ -4,6 +4,7 @@
  */
 package ht3;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,20 +19,23 @@ public class HT3 {
     
     //selection O(n2)
     public static void main(String[] args) {
+        Random rand = new Random();
         Sorting sort = new Sorting();
         Scanner entrada = new Scanner(System.in);
-        int resultado[];
+        numbers[] nums;
         int size;
-        System.out.println("Ingrese el tamaño del arreglo de numeros (min: 10 max: 100)");
-        size = entrada.nextInt();
-        resultado = new int [size];
         
-        sort.setSize(size);
-        sort.fill();
-        resultado = sort.selectionSort();
+        System.out.println("Ingrese el tamaño del arreglo de numeros (min: 10 max: 3000)");
+        size = entrada.nextInt();
+        nums = new numbers[size];
+        for(int x=0; x<size; x++){
+            nums[x]=new numbers(rand.nextInt(size+1));
+        }
+        sort.selectionSort(nums);
+
         System.out.println("*********Selection Sort*********");
-        for(int i = 0; i < size; i++){
-          System.out.println(resultado[i]);
+        for(numbers num : nums){
+            System.out.println(num);
         }
     }
 }
