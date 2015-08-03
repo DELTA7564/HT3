@@ -22,19 +22,27 @@ public class HT3 {
         Random rand = new Random();
         Sorting sort = new Sorting();
         Scanner entrada = new Scanner(System.in);
-        numbers[] nums;
+        numbers[][] nums;
         int size;
         
         System.out.println("Ingrese el tamaño del arreglo de numeros (min: 10 max: 3000)");
         size = entrada.nextInt();
-        nums = new numbers[size];
-        for(int x=0; x<size; x++){
-            nums[x]=new numbers(rand.nextInt(size+1));
+        nums = new numbers[4][size];
+        for(int x=0; x<4; x++){
+            for(int y=0; y<size; y++){
+                nums[x][y]=new numbers(rand.nextInt(size+1));
+            }
         }
-        sort.selectionSort(nums);
+        sort.selectionSort(nums[0]);
+        sort.insertionSort(nums[1]);
 
         System.out.println("*********Selection Sort*********");
-        for(numbers num : nums){
+        for(numbers num : nums[0]){
+            System.out.println(num);
+        }
+        
+        System.out.println("*********Insertion Sort*********");
+        for(numbers num : nums[1]){
             System.out.println(num);
         }
     }
