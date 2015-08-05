@@ -42,25 +42,24 @@ public class Sorting {
             list[position] = list[position-1];
             position--;
             }
-            
             list[position] = key;
         }
     }
-        static void mergeSort(Comparable[] A) {
-        if (A.length > 1) {
-            int q = A.length/2;
+    static void mergeSort(Comparable[] list) {
+        if (list.length > 1) {
+            int mid = list.length/2;
 
-            Comparable[] leftArray = Arrays.copyOfRange(A, 0, q);
-            Comparable[] rightArray = Arrays.copyOfRange(A,q,A.length);
+            Comparable[] leftArray = Arrays.copyOfRange(list, 0, mid);
+            Comparable[] rightArray = Arrays.copyOfRange(list, mid, list.length);
 
             mergeSort(leftArray);
             mergeSort(rightArray);
 
-            merge(A,leftArray,rightArray);
+            merge(list,leftArray,rightArray);
         }
     }
 
-    static void merge(Comparable[] a, Comparable[] l,Comparable[] r) {
+    static void merge(Comparable[] sublist, Comparable[] l,Comparable[] r) {
         int totElem = l.length + r.length;
         //int[] a = new int[totElem];
         int i,li,ri;
@@ -68,12 +67,12 @@ public class Sorting {
         while ( i < totElem) {
             if ((li < l.length) && (ri<r.length)) {
                 if (l[li].compareTo(r[ri]) < 0) {
-                    a[i] = l[li];
+                    sublist[i] = l[li];
                     i++;
                     li++;
                 }
                 else {
-                    a[i] = r[ri];
+                    sublist[i] = r[ri];
                     i++;
                     ri++;
                 }
@@ -81,21 +80,19 @@ public class Sorting {
             else {
                 if (li >= l.length) {
                     while (ri < r.length) {
-                        a[i] = r[ri];
+                        sublist[i] = r[ri];
                         i++;
                         ri++;
                     }
                 }
                 if (ri >= r.length) {
                     while (li < l.length) {
-                        a[i] = l[li];
+                        sublist[i] = l[li];
                         li++;
                         i++;
                     }
                 }
             }
         }
-        //return a;
-
     }
 }
