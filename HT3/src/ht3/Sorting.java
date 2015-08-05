@@ -12,9 +12,6 @@ import java.util.Random;
  * @author Home
  */
 public class Sorting {
-    public void setText(){
-        
-    }
     public void selectionSort (Comparable[] list){
         int min;
         Comparable temp;
