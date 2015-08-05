@@ -47,4 +47,7 @@ public class Sorting {
          list[position] = key;
       }
    }
+    public void quickSort (Comparable [] list){
+        
+    }
 }
