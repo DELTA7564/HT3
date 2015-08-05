@@ -95,8 +95,7 @@ public class Sorting {
         }
     }
     
-    public void quickSort(Comparable array[], int start, int end)
-{
+    public void quickSort(Comparable array[], int start, int end){
         int i = start;                          // index of left-to-right scan
         int k = end;                            // index of right-to-left scan
 
@@ -122,14 +121,13 @@ public class Sorting {
         {
                 return;                     // the array is sorted, so exit
         }
-}
+    }
 
-public void swap(Comparable array[], int index1, int index2) 
-// pre: array is full and index1, index2 < array.length
-// post: the values at indices 1 and 2 have been swapped
-{
-	Comparable temp = array[index1];           // store the first value in a temp
-	array[index1] = array[index2];      // copy the value of the second into the first
-	array[index2] = temp;               // copy the value of the temp into the second
-}
+    public void swap(Comparable array[], int index1, int index2){
+    // pre: array is full and index1, index2 < array.length
+    // post: the values at indices 1 and 2 have been swapped
+        Comparable temp = array[index1];           // store the first value in a temp
+        array[index1] = array[index2];      // copy the value of the second into the first
+        array[index2] = temp;               // copy the value of the temp into the second
+    }
 }
