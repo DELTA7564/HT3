@@ -18,6 +18,7 @@ public class HT3 {
      */
     
     //selection O(n2)
+    //insertion o(n2)
     public static void main(String[] args) {
         Random rand = new Random();
         Sorting sort = new Sorting();
@@ -35,6 +36,7 @@ public class HT3 {
         }
         sort.selectionSort(nums[0]);
         sort.insertionSort(nums[1]);
+        sort.mergeSort(nums[2]);
 
         System.out.println("*********Selection Sort*********");
         for(numbers num : nums[0]){
@@ -43,6 +45,11 @@ public class HT3 {
         
         System.out.println("*********Insertion Sort*********");
         for(numbers num : nums[1]){
+            System.out.println(num);
+        }
+        
+        System.out.println("*********Merge Sort*********");
+        for(numbers num : nums[2]){
             System.out.println(num);
         }
     }
