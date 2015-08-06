@@ -1,6 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* *******************************************************
+ * Gabriel Martinez 14070
+ * Arturo Garcia 14186
+ * Marcos Benedict 14368
+ *
+ * *******************************************************
+ * El proposito de este programa es ofrecer un acercamiento
+ * hacia las formas de sorting y compararlas por medio de su
+ * big O().
  */
 package ht3;
 
