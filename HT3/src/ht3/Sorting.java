@@ -12,59 +12,57 @@ import java.util.Random;
  * @author Home
  */
 public class Sorting {
-    public void selectionSort (Comparable[] list){
-        int min;
-        Comparable temp;
+    public void selectionSort (Comparable[] list){ //sort por seleccion
+        int min; //variable que almacena la posicion del numero mas pequeño
+        Comparable temp; //creamos un objeto Comparable para almacenar el valor temporal
 
-        for (int index = 0; index < list.length-1; index++){
-            min = index;
-            for (int scan = index+1; scan < list.length; scan++)
-                if (list[scan].compareTo(list[min]) < 0)
-                min = scan;
+        for (int index = 0; index < list.length-1; index++){ //recorremos toda la cadena excepto la ultima posicion
+            min = index; //el index se toma como la posicion minima
+            for (int scan = index+1; scan < list.length; scan++) //recorremos el segemento de la cadena que aun esta desordenado
+                if (list[scan].compareTo(list[min]) < 0) //si el valor en el index es mas pequeño que el minimo actual
+                min = scan; //dicho valor pasa a ser el nuevo minimo y se guarda su posicion
 
-            // Swap the values
-            temp = list[min];
-            list[min] = list[index];
-            list[index] = temp;
+            // se realiza el intercambio de posicion
+            temp = list[min]; //temporal toma el valor en la posicion del minimo
+            list[min] = list[index]; //intercambiamos el minimo con el valor
+            list[index] = temp; //almacenamos el minimo en su nueva posicion y queda ordenado
         }
     }
-    public void insertionSort (Comparable[] list){
-        int position = 0;
-        for (int index = 1; index < list.length; index++){
-            Comparable key = list[index];
-            position = index;
+    public void insertionSort (Comparable[] list){//sort por insercion
+        int position; //iniciamos posicion en 0
+        for (int index = 1; index < list.length; index++){ //sorting ordena comparando con izquierda, por lo que se asume que la primera posicion esta ordenada
+            Comparable key = list[index]; //almacenamos el valor actual en key
+            position = index; //y su index en posicion
 
-            //Shift larger values to the right
-            while (position > 0 && key.compareTo(list[position-1]) < 0){
-                list[position] = list[position-1];
-                position--;
+            while (position > 0 && key.compareTo(list[position-1]) < 0){ //mientras haya cadena y el numero de la izquierda sea mayor
+                list[position] = list[position-1]; //se intercambia posicion con su numero a la izquierda
+                position--; //y disminuye el la cantidad de comparaciones
             }
             
             list[position] = key;
         }
     }
  
-    static void mergeSort(Comparable[] list) {
-        if (list.length > 1) {
-            int mid = list.length/2;
+    static void mergeSort(Comparable[] list) { //sort por union
+        if (list.length > 1) { //hasta que la lista sea de un tamaño de 2
+            int mid = list.length/2; //encontramos el indice medio
 
-            Comparable[] leftArray = Arrays.copyOfRange(list, 0, mid);
+            //dividimos el arreglo en dos, arreglo izquierdoi y derecho
+            Comparable[] leftArray = Arrays.copyOfRange(list, 0, mid); 
             Comparable[] rightArray = Arrays.copyOfRange(list, mid, list.length);
 
             mergeSort(leftArray);
             mergeSort(rightArray);
 
-            merge(list,leftArray,rightArray);
+            merge(list,leftArray,rightArray); //al separar unimos las parejas de arrays
         }
     }
 
-    static void merge(Comparable[] sublist, Comparable[] l,Comparable[] r) {
-        int totElem = l.length + r.length;
-        //int[] a = new int[totElem];
-        int i,li,ri;
-        i = li = ri = 0;
-        while ( i < totElem) {
-            if ((li < l.length) && (ri<r.length)) {
+    static void merge(Comparable[] sublist, Comparable[] l,Comparable[] r) { //metodo para unir los arrays
+        int totElem = l.length + r.length; //establecemos el tamaño total
+        int i = 0,li =0,ri =0; //iniciamos las variables para los indices
+        while ( i < totElem) { //mientars hayan posiciones
+            if ((li < l.length) && (ri<r.length)) { //ordenamos la sublista dependiendo si el numero del array izquiedo o derecho sea mas grande o mas pequeño
                 if (l[li].compareTo(r[ri]) < 0) {
                     sublist[i] = l[li];
                     i++;
